@@ -5,7 +5,7 @@ import router from './router'
 
 Vue.config.productionTip = false
 
-axios.defaults.baseURL = "https://xxxxxxxxxxx.execute-api.us-east-1.amazonaws.com/v1"
+axios.defaults.baseURL = "PASTE API GATEWAY ENDPOINT HERE"
 
 new Vue({
   router,
