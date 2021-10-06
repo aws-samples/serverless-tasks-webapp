@@ -1,0 +1,8 @@
+{
+  "name": "tasks-api",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "njwt": "^1.1.0"
+  }
+}
