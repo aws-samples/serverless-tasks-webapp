@@ -1,5 +1,7 @@
 # Getting Started with Serverless Workshop
 
+Workshop Link: <https://catalog.us-east-1.prod.workshops.aws/v2/workshops/841ce16b-9d86-48ac-a3f6-6a1b29f95d2b>
+
 ## Overview
 
 In this tutorial, you'll create a simple [serverless](https://aws.amazon.com/serverless/) web application that implements a "Todo app" with an API to store and retrieve tasks in a cloud database. In addition, we will integrate machine learning to automatically identify and label objects in images attached to tasks.
