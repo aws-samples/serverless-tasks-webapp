@@ -241,35 +241,16 @@ export default {
       }
       const taskId = taskItem.id.split("#")[1];
       const uploadUrl = await this.getSignedUrl(taskId);
-      const searchParams = {};
-      for (const [key, value] of uploadUrl.searchParams) {
-        searchParams[key] = value;
-      }
-      console.log(`searchParams: ${JSON.stringify(searchParams)}`);
-
-      console.log(`Upload URL: ${uploadUrl}`);
-
-      const baseUrl = uploadUrl.protocol + "//" + uploadUrl.host;
-      console.log(`baseUrl: ${baseUrl}`);
-
-      const instance = axios.create({
-        baseURL: uploadUrl.protocol + "//" + uploadUrl.host,
-      });
 
       const config = {
         headers: { "Content-Type": this.attachment.type },
-        params: searchParams,
       };
 
       console.log(`config: ${JSON.stringify(config)}`);
 
-      console.log(`Uploading to S3: ${uploadUrl.pathname}`);
+      console.log(`Uploading to S3: ${uploadUrl}`);
 
-      const res = await instance.put(
-        uploadUrl.pathname,
-        this.attachment,
-        config
-      );
+      const res = await axios.put(uploadUrl, this.attachment, config);
 
       console.log(res.status); // HTTP status
       Vue.set(taskItem, "progress", "Detecting labels...");
