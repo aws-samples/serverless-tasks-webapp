@@ -145,29 +145,6 @@ Resources:
             AllowedOrigins:
               - "*"
 
-  BucketRole:
-    Type: AWS::IAM::Role
-    Properties:
-      Path: "/"
-      AssumeRolePolicyDocument:
-        Version: "2012-10-17"
-        Statement:
-          - Effect: Allow
-            Principal:
-              Service:
-                - apigateway.amazonaws.com
-            Action: sts:AssumeRole
-      Policies:
-        - PolicyName: BucketPolicy
-          PolicyDocument:
-            Version: "2012-10-17"
-            Statement:
-              - Effect: Allow
-                Action:
-                  - s3:*
-                Resource:
-                  - !Sub "${UploadsBucket.Arn}/*"
-
 Outputs:
   TasksApi:
     Description: API Gateway endpoint URL
