@@ -250,7 +250,10 @@ export default {
 
       console.log(`Uploading to S3: ${uploadUrl}`);
 
-      const res = await axios.put(uploadUrl, this.attachment, config);
+      var instance = axios.create();
+      delete instance.defaults.headers.common["Authorization"];
+
+      const res = await instance.put(uploadUrl, this.attachment, config);
 
       console.log(res.status); // HTTP status
       Vue.set(taskItem, "progress", "Detecting labels...");
