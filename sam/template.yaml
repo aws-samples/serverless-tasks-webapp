@@ -191,6 +191,11 @@ Resources:
               - HEAD
             AllowedOrigins:
               - "*"
+      EncryptionConfiguration:
+        ServerSideEncryptionConfiguration:
+          Rules:
+            - ApplyServerSideEncryptionByDefault:
+                SSEAlgorithm: AES256
 
   TasksTable:
     Type: AWS::DynamoDB::Table
