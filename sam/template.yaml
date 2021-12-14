@@ -144,6 +144,11 @@ Resources:
               - HEAD
             AllowedOrigins:
               - "*"
+      EncryptionConfiguration:
+        ServerSideEncryptionConfiguration:
+          Rules:
+            - ServerSideEncryptionByDefault:
+                SSEAlgorithm: "AES256"
 
 Outputs:
   TasksApi:
