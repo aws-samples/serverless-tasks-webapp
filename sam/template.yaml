@@ -144,9 +144,8 @@ Resources:
               - HEAD
             AllowedOrigins:
               - "*"
-      EncryptionConfiguration:
+      BucketEncryption:
         ServerSideEncryptionConfiguration:
-          Rules:
             - ServerSideEncryptionByDefault:
                 SSEAlgorithm: "AES256"
 
