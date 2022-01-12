@@ -134,6 +134,8 @@ Resources:
     Type: AWS::S3::Bucket
     Properties:
       BucketName: !Sub "uploads-${AWS::StackName}-${AWS::Region}-${AWS::AccountId}"
+      VersioningConfiguration:
+        Status: Enabled
       CorsConfiguration:
         CorsRules:
           - AllowedHeaders:
