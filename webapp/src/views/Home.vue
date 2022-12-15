@@ -155,6 +155,12 @@ export default {
       this.error = "";
       let token = getAuthToken();
       console.log(`Creating task`);
+      console.log("Title:" + this.title)
+      console.log("Body:" + this.body)
+      if (!this.title || !this.body) {
+        console.log("Title or body empty")
+        return;
+      }
       await axios
         .post(
           "/tasks",
