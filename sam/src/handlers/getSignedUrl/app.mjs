@@ -1,7 +1,7 @@
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
 import path from 'path';
-import uuid from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 const bucket = process.env.S3_BUCKET;
 
@@ -22,7 +22,7 @@ export const handler = async (event) => {
     throw new Error('Parameter missing: taskId');
   }
 
-  const filename = uuid.v4() + path.extname(event.queryStringParameters.filename);
+  const filename = uuidv4() + path.extname(event.queryStringParameters.filename);
   const filetype = event.queryStringParameters.filetype;
   const taskId = event.queryStringParameters.taskId;
   const objectName = `${user}/${taskId}/${filename}`;
