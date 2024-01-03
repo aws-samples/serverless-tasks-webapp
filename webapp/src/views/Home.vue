@@ -128,13 +128,12 @@
 </template>
 
 <script>
-import Vue from "vue";
 import axios from "axios";
 import { getAuthToken } from "../utils/auth";
 import { sleep } from "../utils/core";
 
 export default {
-  name: "home",
+  name: "homeView",
   data() {
     return {
       error: "",
@@ -262,7 +261,7 @@ export default {
       const res = await instance.put(uploadUrl, this.attachment, config);
 
       console.log(res.status); // HTTP status
-      Vue.set(taskItem, "progress", "Detecting labels...");
+      taskItem['progress'] = "Detecting labels...";
       await sleep(5000); // wait for Lambda to trigger and Rekognition to process
       await this.getTasks();
     },
