@@ -1,16 +1,14 @@
-import Vue from 'vue'
-import Router from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import Home from './views/Home.vue'
 import Login from './views/Login.vue'
 import About from './views/About.vue'
 import NotFoundPage from './components/NotFoundPage.vue'
 import { clearAuthToken, isLoggedIn } from './utils/auth'
 
-Vue.use(Router)
+// Vue.use(Router)
 
-const router = new Router({
-  mode: 'history',
-  base: process.env.BASE_URL,
+const router = createRouter({
+  history: createWebHistory(process.env.BASE_URL),
   routes: [
     {
       path: '/',
@@ -39,7 +37,8 @@ const router = new Router({
       component: About
     },
     {
-      path: '*',
+      path: '/:pathMatch(.*)*',
+      name: 'NotFound',
       component: NotFoundPage
     }
   ]

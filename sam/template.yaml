@@ -4,7 +4,7 @@ Description: Tasks REST API Service
 
 Globals:
   Function:
-    Runtime: nodejs14.x
+    Runtime: nodejs20.x
     Timeout: 3
   Api:
     Cors:
@@ -96,7 +96,7 @@ Resources:
     Properties:
       CodeUri: src/handlers/getToken
       Handler: app.handler
-      Runtime: nodejs14.x
+      Runtime: nodejs20.x
       Events:
         GetTokenFunctionApi:
           Type: Api
@@ -104,15 +104,13 @@ Resources:
             RestApiId: !Ref TasksApi
             Path: /token
             Method: POST
-            # Auth:
-            #   Authorizer: NONE
 
   GetSignedUrlFunction:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: src/handlers/getSignedUrl
       Handler: app.handler
-      Runtime: nodejs14.x
+      Runtime: nodejs20.x
       Environment:
         Variables:
           S3_BUCKET: !Ref UploadsBucket
