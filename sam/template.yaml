@@ -14,6 +14,28 @@ Globals:
       AllowCredentials: "'*'"
 
 Resources:
+    # CreateTask Lambda Function
+  CreateTaskFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: src/handlers/createTask
+      Handler: app.handler
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref TasksTable
+      Environment:
+        Variables:
+          TASKS_TABLE: !Ref TasksTable
+      Events:
+        PostTaskFunctionApi:
+          Type: Api
+          Properties:
+            RestApiId: !Ref TasksApi
+            Path: /tasks
+            Method: POST
+            Auth:
+              Authorizer: MyLambdaTokenAuthorizer
+
   TasksApi:
     Type: AWS::Serverless::Api
     Properties:
